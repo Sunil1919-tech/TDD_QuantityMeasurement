@@ -46,4 +46,11 @@ public class QuantityMeasurementTest {
         Integer feet2 = new Integer(1);
         Assertions.assertNotEquals(feet1, feet2);
     }
+
+    @Test
+    void given0InchAnd0Inch_ShouldReturnEqual() {
+        Inch inch1=new Inch(0.0);
+        Inch inch2=new Inch(0.0);
+        Assertions.assertEquals(inch1,inch2);
+    }
 }
