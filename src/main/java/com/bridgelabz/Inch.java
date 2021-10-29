@@ -1,11 +1,10 @@
 package com.bridgelabz;
 
-import java.util.Objects;
-
 public class Inch {
     private final double value;
+
     public Inch(double value) {
-        this.value=value;
+        this.value = value;
     }
 
     @Override

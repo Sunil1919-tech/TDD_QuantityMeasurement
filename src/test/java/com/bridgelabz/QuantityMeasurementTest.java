@@ -53,4 +53,26 @@ public class QuantityMeasurementTest {
         Inch inch2=new Inch(0.0);
         Assertions.assertEquals(inch1,inch2);
     }
+
+    @Test
+    void given0InchAndNull_ShouldReturnNotEqual() {
+        Inch inch1 = new Inch(0.0);
+        Inch inch2 = null;
+        Assertions.assertNotEquals(inch1,inch2);
+    }
+
+    @Test
+    void givenInchWithSameReference_ShouldReturnTrue() {
+        Inch inch =new Inch(1.0);
+        boolean result =inch==inch;
+        Assertions.assertTrue(result);
+    }
+
+    @Test
+    void givenInchWithDiffReference_ShouldReturnFalse() {
+        Inch inch1= new Inch(0.0);
+        Inch inch2 = new Inch(0.0);
+        boolean result = inch1==inch2;
+        Assertions.assertFalse(result);
+    }
 }
