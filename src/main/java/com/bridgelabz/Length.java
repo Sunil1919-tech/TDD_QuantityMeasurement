@@ -1,12 +1,10 @@
 package com.bridgelabz;
 
-import java.util.Objects;
-
 public class Length {
     private final double value;
 
     public Length(double value) {
-        this.value=value;
+        this.value = value;
     }
 
     @Override
