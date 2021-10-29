@@ -49,30 +49,44 @@ public class QuantityMeasurementTest {
 
     @Test
     void given0InchAnd0Inch_ShouldReturnEqual() {
-        Inch inch1=new Inch(0.0);
-        Inch inch2=new Inch(0.0);
-        Assertions.assertEquals(inch1,inch2);
+        Inch inch1 = new Inch(0.0);
+        Inch inch2 = new Inch(0.0);
+        Assertions.assertEquals(inch1, inch2);
     }
 
     @Test
     void given0InchAndNull_ShouldReturnNotEqual() {
         Inch inch1 = new Inch(0.0);
         Inch inch2 = null;
-        Assertions.assertNotEquals(inch1,inch2);
+        Assertions.assertNotEquals(inch1, inch2);
     }
 
     @Test
     void givenInchWithSameReference_ShouldReturnTrue() {
-        Inch inch =new Inch(1.0);
-        boolean result =inch==inch;
+        Inch inch = new Inch(1.0);
+        boolean result = inch == inch;
         Assertions.assertTrue(result);
     }
 
     @Test
     void givenInchWithDiffReference_ShouldReturnFalse() {
-        Inch inch1= new Inch(0.0);
+        Inch inch1 = new Inch(0.0);
         Inch inch2 = new Inch(0.0);
-        boolean result = inch1==inch2;
+        boolean result = inch1 == inch2;
         Assertions.assertFalse(result);
+    }
+
+    @Test
+    void givenInchandDifferentType_ShouldReturnNotEqual() {
+        Inch inch = new Inch(0.0);
+        boolean inch1 = true;
+        Assertions.assertNotEquals(inch, inch1);
+    }
+
+    @Test
+    void given1InchAnd1Inch_ShouldReturnEqual() {
+        Inch inch1 = new Inch(2.0);
+        Inch inch2 = new Inch(2.0);
+        Assertions.assertEquals(inch1, inch2);
     }
 }
