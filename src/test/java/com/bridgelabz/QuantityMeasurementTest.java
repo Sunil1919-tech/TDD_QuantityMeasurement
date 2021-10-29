@@ -26,9 +26,17 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    void given0FeetAnd0FeetFromDiffReference_ShouldReturnNotSame() {
-        Length feet1=new Length(0.0);
-        Length feet2= new Length(0.0);
-        Assertions.assertNotSame(feet1,feet2);
+    void given0FeetAnd0FeetFromDiffReference_ShouldReturnFalse() {
+        Length feet1 = new Length(0.0);
+        Length feet2 = new Length(0.0);
+        boolean result = feet1 == feet2;
+        Assertions.assertFalse(result);
+    }
+
+    @Test
+    void given0FeetFromSameReference_ShouldReturnTrue() {
+        Length feet = new Length(0.0);
+        boolean result = feet == feet;
+        Assertions.assertTrue(result);
     }
 }
