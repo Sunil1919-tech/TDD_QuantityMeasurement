@@ -39,4 +39,11 @@ public class QuantityMeasurementTest {
         boolean result = feet == feet;
         Assertions.assertTrue(result);
     }
+
+    @Test
+    void givenFeetWithDiffType_shouldReturnNotEqual() {
+        Length feet1 = new Length(0.0);
+        Integer feet2 = new Integer(1);
+        Assertions.assertNotEquals(feet1, feet2);
+    }
 }
