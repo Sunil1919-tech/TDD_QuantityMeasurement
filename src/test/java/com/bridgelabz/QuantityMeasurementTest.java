@@ -17,4 +17,12 @@ public class QuantityMeasurementTest {
         Length feet2 = new Length(1.0);
         Assertions.assertNotEquals(feet1, feet2);
     }
+
+    @Test
+    void given0FeetAndNull_ShouldReturnNotEquals() {
+        Length feet1 = new Length(1.0);
+        Length feet2 = null;
+        Assertions.assertNotEquals(feet1, feet2);
+    }
+
 }
