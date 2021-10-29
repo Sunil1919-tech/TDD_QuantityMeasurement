@@ -14,4 +14,8 @@ public class Length {
         Length length = (Length) o;
         return Double.compare(length.value, value) == 0;
     }
+
+    public double getValue() {
+        return value;
+    }
 }

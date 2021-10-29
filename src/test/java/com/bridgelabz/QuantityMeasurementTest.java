@@ -43,7 +43,7 @@ public class QuantityMeasurementTest {
     @Test
     void givenFeetWithDiffType_shouldReturnNotEqual() {
         Length feet1 = new Length(0.0);
-        Integer feet2 = new Integer(1);
+        boolean feet2 = true;
         Assertions.assertNotEquals(feet1, feet2);
     }
 
@@ -88,5 +88,13 @@ public class QuantityMeasurementTest {
         Inch inch1 = new Inch(2.0);
         Inch inch2 = new Inch(2.0);
         Assertions.assertEquals(inch1, inch2);
+    }
+
+    @Test
+    void given1Feet_comparedTo12Inches_ShouldReturnEquals() {
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement();
+        Length feet = new Length(1.0);
+        Inch result = quantityMeasurement.convertFtToInch(feet.getValue());
+        Assertions.assertEquals(12.0, result.getValue());
     }
 }
