@@ -117,15 +117,22 @@ public class QuantityMeasurementTest {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement();
         Feet feet = new Feet(1.0);
         Yard result = quantityMeasurement.convertFtToYard(feet.getValue());
-        Assertions.assertNotEquals(1.0,result.getValue(),0.1);
+        Assertions.assertNotEquals(1.0, result.getValue(), 0.1);
     }
 
     @Test
     void given1InchAnd1Yard_WhenCompared_ShouldReturnNotEquals() {
-        QuantityMeasurement quantityMeasurement=new QuantityMeasurement();
-        Inch inch =new Inch(1.0);
-        Yard result =quantityMeasurement.convertInchToYard(inch.getValue());
-        Assertions.assertNotEquals(1.0,result.getValue(),0.1);
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement();
+        Inch inch = new Inch(1.0);
+        Yard result = quantityMeasurement.convertInchToYard(inch.getValue());
+        Assertions.assertNotEquals(1.0, result.getValue(), 0.1);
+    }
 
+    @Test
+    void given36nchAnd1Yard_WhenCompared_ShouldReturnEquals() {
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement();
+        Inch inch = new Inch(36.0);
+        Yard result = quantityMeasurement.convertInchToYard(inch.getValue());
+        Assertions.assertEquals(1.0,result.getValue(),0.1);
     }
 }
