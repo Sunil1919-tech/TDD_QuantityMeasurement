@@ -3,7 +3,6 @@ package com.bridgelabz;
 public class QuantityMeasurement {
 
     public Inch convertFtToInch(double feetValue) {
-
         return new Inch(feetValue * 12.0);
     }
 
@@ -17,5 +16,9 @@ public class QuantityMeasurement {
 
     public Inch convertYardToInch(double yard) {
         return new Inch(yard * 36.0);
+    }
+
+    public Feet convertYardToFeet(double yardValue) {
+        return new Feet(yardValue * 3.0);
     }
 }
