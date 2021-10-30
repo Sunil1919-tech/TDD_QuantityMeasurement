@@ -10,4 +10,8 @@ public class QuantityMeasurement {
     public Yard convertFtToYard(double feet) {
         return new Yard(feet * 0.33);
     }
+
+    public Yard convertInchToYard(double inch) {
+        return new Yard(inch * 0.0277);
+    }
 }

@@ -119,4 +119,13 @@ public class QuantityMeasurementTest {
         Yard result = quantityMeasurement.convertFtToYard(feet.getValue());
         Assertions.assertNotEquals(1.0,result.getValue(),0.1);
     }
+
+    @Test
+    void given1InchAnd1Yard_WhenCompared_ShouldReturnNotEquals() {
+        QuantityMeasurement quantityMeasurement=new QuantityMeasurement();
+        Inch inch =new Inch(1.0);
+        Yard result =quantityMeasurement.convertInchToYard(inch.getValue());
+        Assertions.assertNotEquals(1.0,result.getValue(),0.1);
+
+    }
 }
