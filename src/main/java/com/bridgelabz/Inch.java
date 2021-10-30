@@ -7,6 +7,7 @@ public class Inch {
         this.value = value;
     }
 
+    //equals method
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -15,6 +16,7 @@ public class Inch {
         return Double.compare(inch.value, value) == 0;
     }
 
+    //getValue method
     public double getValue() {
         return value;
     }
