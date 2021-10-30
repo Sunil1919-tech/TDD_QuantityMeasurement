@@ -133,6 +133,14 @@ public class QuantityMeasurementTest {
         QuantityMeasurement quantityMeasurement = new QuantityMeasurement();
         Inch inch = new Inch(36.0);
         Yard result = quantityMeasurement.convertInchToYard(inch.getValue());
-        Assertions.assertEquals(1.0,result.getValue(),0.1);
+        Assertions.assertEquals(1.0, result.getValue(), 0.1);
+    }
+
+    @Test
+    void given1YardAnd36Inch_WhenCompared_ShouldReturnEquals() {
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement();
+        Yard yard = new Yard(1.0);
+        Inch result = quantityMeasurement.convertYardToInch(yard.getValue());
+        Assertions.assertEquals(36.0, result.getValue(), 0.1);
     }
 }

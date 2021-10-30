@@ -14,4 +14,8 @@ public class QuantityMeasurement {
     public Yard convertInchToYard(double inch) {
         return new Yard(inch * 0.0277);
     }
+
+    public Inch convertYardToInch(double yard) {
+        return new Inch(yard * 36.0);
+    }
 }
