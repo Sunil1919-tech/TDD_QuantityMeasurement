@@ -103,4 +103,12 @@ public class QuantityMeasurementTest {
         Yard yard1 = new Yard(0.0);
         Yard yard2 = new Yard(0.0);
     }
+
+    @Test
+    void given3FeetAnd1Yard_WhenCompared_ShouldReturnEqual() {
+        QuantityMeasurement quantityMeasurement = new QuantityMeasurement();
+        Feet feet = new Feet(3.0);
+        Yard result = quantityMeasurement.convertFtToYard(feet.getValue());
+        Assertions.assertEquals(1.0, result.getValue(), 0.1);
+    }
 }
