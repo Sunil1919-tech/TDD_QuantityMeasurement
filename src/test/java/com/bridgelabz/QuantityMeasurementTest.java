@@ -97,4 +97,10 @@ public class QuantityMeasurementTest {
         Inch result = quantityMeasurement.convertFtToInch(feet.getValue());
         Assertions.assertEquals(12.0, result.getValue());
     }
+
+    @Test
+    void given0YardAnd0Yard_ShouldReturnEqual() {
+        Yard yard1 = new Yard(0.0);
+        Yard yard2 = new Yard(0.0);
+    }
 }
