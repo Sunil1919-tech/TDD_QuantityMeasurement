@@ -61,6 +61,15 @@ public class QmLengths {
         return value * 3.0;
     }
 
+    /**
+     * method to convert from Inch to Centimeter
+     * @return actual result
+     */
+    public double convertInchToCM() {
+        return value * 2.5;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

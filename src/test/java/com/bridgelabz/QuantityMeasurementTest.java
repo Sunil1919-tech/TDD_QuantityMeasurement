@@ -165,4 +165,11 @@ public class QuantityMeasurementTest {
         QmLengths centimeter2 = null;
         Assertions.assertNotEquals(centimeter1, centimeter2);
     }
+
+    @Test
+    void given2InchAnd5CM_WhenCompared_ShouldReturnEqual() {
+        QmLengths inch = new QmLengths(QmLengths.Unit.INCH, 2.0);
+        double result = inch.convertInchToCM();
+        Assertions.assertEquals(5.0, result);
+    }
 }
