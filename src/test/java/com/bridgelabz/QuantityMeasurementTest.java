@@ -158,4 +158,11 @@ public class QuantityMeasurementTest {
         QmLengths centimeter2 = new QmLengths(QmLengths.Unit.CENTIMETER, 1.0);
         Assertions.assertNotEquals(centimeter1, centimeter2);
     }
+
+    @Test
+    void given0CMandNull_ShouldReturnNotEqual() {
+        QmLengths centimeter1 = new QmLengths(QmLengths.Unit.CENTIMETER, 0.0);
+        QmLengths centimeter2 = null;
+        Assertions.assertNotEquals(centimeter1, centimeter2);
+    }
 }
