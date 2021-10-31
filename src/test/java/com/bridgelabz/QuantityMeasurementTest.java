@@ -172,4 +172,11 @@ public class QuantityMeasurementTest {
         double result = inch.convertInchToCM();
         Assertions.assertEquals(5.0, result);
     }
+
+    @Test
+    void given5CMAnd2Inch_whenCompared_ShouldReturnEquals() {
+        QmLengths cm = new QmLengths(QmLengths.Unit.CENTIMETER, 5.0);
+        double result = cm.convertCMtoInch();
+        Assertions.assertEquals(2.0, result);
+    }
 }
