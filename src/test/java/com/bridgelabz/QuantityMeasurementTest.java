@@ -144,4 +144,18 @@ public class QuantityMeasurementTest {
         double result = yard.convertYardToFeet();
         Assertions.assertEquals(3.0, result);
     }
+
+    @Test
+    void given0CMand0CM_ShouldReturnEqual() {
+        QmLengths centimeter1 = new QmLengths(QmLengths.Unit.CENTIMETER, 0.0);
+        QmLengths centimeter2 = new QmLengths(QmLengths.Unit.CENTIMETER, 0.0);
+        Assertions.assertEquals(centimeter1, centimeter2);
+    }
+
+    @Test
+    void given0CMand1CM_ShouldReturnNotEqual() {
+        QmLengths centimeter1 = new QmLengths(QmLengths.Unit.CENTIMETER, 0.0);
+        QmLengths centimeter2 = new QmLengths(QmLengths.Unit.CENTIMETER, 1.0);
+        Assertions.assertNotEquals(centimeter1, centimeter2);
+    }
 }

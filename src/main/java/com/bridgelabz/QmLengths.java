@@ -9,7 +9,9 @@ package com.bridgelabz;
  * @since 31/10/2021
  */
 public class QmLengths {
-    public enum Unit {FEET, INCH, YARD}
+    public enum Unit {FEET, INCH, YARD,CENTIMETER
+
+    }
 
     private final Unit unit;
     private final double value;
