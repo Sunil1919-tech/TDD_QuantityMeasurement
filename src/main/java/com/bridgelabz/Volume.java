@@ -18,5 +18,6 @@ public class Volume {
         return Double.compare(volume.value, value) == 0 && unit == volume.unit;
     }
 
-    public enum Unit {GALLON}
+    public enum Unit {GALLON,LITER}
+
 }

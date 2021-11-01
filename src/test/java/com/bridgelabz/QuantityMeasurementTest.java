@@ -260,4 +260,46 @@ public class QuantityMeasurementTest {
         Assertions.assertNotSame(gallon1, gallon2);
     }
 
+    @Test
+    void give0LiterAnd0Liter_ShouldReturnEquals() {
+        Volume liter1=new Volume(Volume.Unit.LITER,0.0);
+        Volume liter2 = new Volume(Volume.Unit.LITER,0.0);
+        Assertions.assertEquals(liter1,liter2);
+    }
+
+    @Test
+    void give1LiterAnd2Liter_ShouldReturnNotEquals() {
+        Volume liter1=new Volume(Volume.Unit.LITER,1.0);
+        Volume liter2 = new Volume(Volume.Unit.LITER,2.0);
+        Assertions.assertNotEquals(liter1,liter2);
+    }
+
+    @Test
+    void given0GallonAndNull_ShouldReturnsNotEquals() {
+        Volume liter1=new Volume(Volume.Unit.LITER,1.0);
+        Volume liter2=null;
+        Assertions.assertNotEquals(liter1,liter2);
+    }
+
+    @Test
+    void given1LiterAndDifferentType_ShouldReturnNotEqual() {
+        Volume liter1 = new Volume(Volume.Unit.LITER, 010);
+        boolean liter2 = true;
+        Assertions.assertNotEquals(liter1, liter2);
+    }
+
+    @Test
+    void given1LiterWithSameReference_ShouldReturnTrue() {
+        Volume liter = new Volume(Volume.Unit.LITER, 1.0);
+        boolean result = liter == liter;
+        Assertions.assertTrue(result);
+    }
+
+    @Test
+    void givenliterWithDiffReference_ShouldReturnFalse() {
+        Volume liter1 = new Volume(Volume.Unit.LITER, 0.0);
+        Volume liter2 = new Volume(Volume.Unit.LITER, 0.0);
+        boolean result = liter1 == liter2;
+        Assertions.assertFalse(result);
+    }
 }
