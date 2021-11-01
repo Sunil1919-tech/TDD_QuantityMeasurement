@@ -231,4 +231,33 @@ public class QuantityMeasurementTest {
         Volume gallon2 = new Volume(Volume.Unit.GALLON,0.0);
         Assertions.assertEquals(gallon1, gallon2);
     }
+
+    @Test
+    void given0GallonAnd1Gallon_ShouldReturnNotEqual() {
+        Volume gallon1 = new Volume(Volume.Unit.GALLON,0.0);
+        Volume gallon2 = new Volume(Volume.Unit.GALLON,1.0);
+        Assertions.assertNotEquals(gallon1,gallon2);
+    }
+
+    @Test
+    void given0GallonAndNullValue_ShouldReturnNotEqual() {
+        Volume gallon1 = new Volume(Volume.Unit.GALLON,0.0);
+        Volume gallon2 = null;
+        Assertions.assertNotEquals(gallon1,gallon2);
+    }
+
+    @Test
+    void given1GallonAnd1FeetFromDiffType_ShouldReturnNotEqual() {
+        Volume gallon = new Volume(Volume.Unit.GALLON,1.0);
+       Length feet=new Length(Length.Unit.FEET,1.0);
+       Assertions.assertNotEquals(gallon,feet);
+    }
+
+    @Test
+    void given1GallonAnd1GallonFromDifReference_ShouldReturnNotEquals() {
+        Volume gallon1 = new Volume(Volume.Unit.GALLON, 1.0);
+        Volume gallon2 = new Volume(Volume.Unit.GALLON, 1.0);
+        Assertions.assertNotSame(gallon1, gallon2);
+    }
+
 }
