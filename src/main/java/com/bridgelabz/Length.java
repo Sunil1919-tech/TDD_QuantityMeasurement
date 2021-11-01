@@ -9,6 +9,7 @@ package com.bridgelabz;
  * @since 31/10/2021
  */
 public class Length {
+
     public enum Unit {
         FEET, INCH, YARD, CENTIMETER
     }
@@ -57,6 +58,12 @@ public class Length {
         return false;
     }
 
+    public Length sumOfLengths(Length that) {
+        double sum = 0.0;
+        if (this.unit.equals(Unit.INCH) && that.unit.equals(Unit.INCH))
+            sum = this.value + that.value;
+        return new Length(Unit.INCH,sum);
+    }
     /**
      * equals method to compare the object values with different references
      * @param o
