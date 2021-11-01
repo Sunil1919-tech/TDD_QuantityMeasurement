@@ -108,7 +108,7 @@ public class QuantityMeasurementTest {
     @Test
     void given3FeetAnd1Yard_WhenCompared_ShouldReturnEqual() {
         Length feet = new Length(Length.Unit.FEET, 3.0);
-        Length yard = new Length(Length.Unit.YARD,1.0);
+        Length yard = new Length(Length.Unit.YARD, 1.0);
         boolean compareCheck = feet.compare(yard);
         Assertions.assertTrue(compareCheck);
     }
@@ -116,7 +116,7 @@ public class QuantityMeasurementTest {
     @Test
     void given1FeetAnd1Yard_WhenCompared_ShouldReturnNotEquals() {
         Length feet = new Length(Length.Unit.FEET, 1.0);
-        Length yard = new Length(Length.Unit.YARD,1.0);
+        Length yard = new Length(Length.Unit.YARD, 1.0);
         boolean compareCheck = feet.compare(yard);
         Assertions.assertFalse(compareCheck);
     }
@@ -124,7 +124,7 @@ public class QuantityMeasurementTest {
     @Test
     void given1InchAnd1Yard_WhenCompared_ShouldReturnNotEquals() {
         Length inch = new Length(Length.Unit.INCH, 1.0);
-        Length yard = new Length(Length.Unit.YARD,1.0);
+        Length yard = new Length(Length.Unit.YARD, 1.0);
         boolean compareCheck = inch.compare(yard);
         Assertions.assertFalse(compareCheck);
     }
@@ -132,7 +132,7 @@ public class QuantityMeasurementTest {
     @Test
     void given36nchAnd1Yard_WhenCompared_ShouldReturnEquals() {
         Length inch = new Length(Length.Unit.INCH, 36.0);
-        Length yard = new Length(Length.Unit.YARD,1.0);
+        Length yard = new Length(Length.Unit.YARD, 1.0);
         boolean compareCheck = inch.compare(yard);
         Assertions.assertTrue(compareCheck);
     }
@@ -140,7 +140,7 @@ public class QuantityMeasurementTest {
     @Test
     void given1YardAnd36Inch_WhenCompared_ShouldReturnEquals() {
         Length yard = new Length(Length.Unit.YARD, 1.0);
-        Length inch = new Length(Length.Unit.INCH,36.0);
+        Length inch = new Length(Length.Unit.INCH, 36.0);
         boolean compareCheck = yard.compare(inch);
         Assertions.assertTrue(compareCheck);
     }
@@ -178,7 +178,7 @@ public class QuantityMeasurementTest {
     void given2InchAnd5CM_WhenCompared_ShouldReturnEqual() {
         Length inch = new Length(Length.Unit.INCH, 2.0);
         Length cm = new Length(Length.Unit.CENTIMETER, 5.0);
-        boolean compareCheck=inch.compare(cm);
+        boolean compareCheck = inch.compare(cm);
         Assertions.assertTrue(compareCheck);
     }
 
@@ -196,7 +196,7 @@ public class QuantityMeasurementTest {
         Length inch2 = new Length(Length.Unit.INCH, 2.0);
         Length expectedSum = new Length(Length.Unit.INCH, 4.0);
         Length actualSum = inch1.sumOfLengths(inch2);
-        Assertions.assertEquals(expectedSum,actualSum);
+        Assertions.assertEquals(expectedSum, actualSum);
     }
 
     @Test
@@ -205,7 +205,7 @@ public class QuantityMeasurementTest {
         Length inch = new Length(Length.Unit.INCH, 2.0);
         Length expectedSum = new Length(Length.Unit.INCH, 14.0);
         Length actualSum = feet.sumOfLengths(inch);
-        Assertions.assertEquals(expectedSum,actualSum);
+        Assertions.assertEquals(expectedSum, actualSum);
     }
 
     @Test
@@ -214,7 +214,7 @@ public class QuantityMeasurementTest {
         Length feet2 = new Length(Length.Unit.FEET, 1.0);
         Length expectedSum = new Length(Length.Unit.INCH, 24.0);
         Length actualSum = feet1.sumOfLengths(feet2);
-        Assertions.assertEquals(expectedSum,actualSum);
+        Assertions.assertEquals(expectedSum, actualSum);
     }
 
     @Test
@@ -223,34 +223,35 @@ public class QuantityMeasurementTest {
         Length cm = new Length(Length.Unit.CENTIMETER, 2.5);
         Length expectedSum = new Length(Length.Unit.INCH, 3.0);
         Length actualSum = inch.sumOfLengths(cm);
-        Assertions.assertEquals(expectedSum,actualSum);
+        Assertions.assertEquals(expectedSum, actualSum);
     }
+
     @Test
-    public void given0GallonAnd0Gallon_ShouldReturnEqual(){
-        Volume gallon1 = new Volume(Volume.Unit.GALLON,0.0);
-        Volume gallon2 = new Volume(Volume.Unit.GALLON,0.0);
+    public void given0GallonAnd0Gallon_ShouldReturnEqual() {
+        Volume gallon1 = new Volume(Volume.Unit.GALLON, 0.0);
+        Volume gallon2 = new Volume(Volume.Unit.GALLON, 0.0);
         Assertions.assertEquals(gallon1, gallon2);
     }
 
     @Test
     void given0GallonAnd1Gallon_ShouldReturnNotEqual() {
-        Volume gallon1 = new Volume(Volume.Unit.GALLON,0.0);
-        Volume gallon2 = new Volume(Volume.Unit.GALLON,1.0);
-        Assertions.assertNotEquals(gallon1,gallon2);
+        Volume gallon1 = new Volume(Volume.Unit.GALLON, 0.0);
+        Volume gallon2 = new Volume(Volume.Unit.GALLON, 1.0);
+        Assertions.assertNotEquals(gallon1, gallon2);
     }
 
     @Test
     void given0GallonAndNullValue_ShouldReturnNotEqual() {
-        Volume gallon1 = new Volume(Volume.Unit.GALLON,0.0);
+        Volume gallon1 = new Volume(Volume.Unit.GALLON, 0.0);
         Volume gallon2 = null;
-        Assertions.assertNotEquals(gallon1,gallon2);
+        Assertions.assertNotEquals(gallon1, gallon2);
     }
 
     @Test
     void given1GallonAnd1FeetFromDiffType_ShouldReturnNotEqual() {
-        Volume gallon = new Volume(Volume.Unit.GALLON,1.0);
-       Length feet=new Length(Length.Unit.FEET,1.0);
-       Assertions.assertNotEquals(gallon,feet);
+        Volume gallon = new Volume(Volume.Unit.GALLON, 1.0);
+        Length feet = new Length(Length.Unit.FEET, 1.0);
+        Assertions.assertNotEquals(gallon, feet);
     }
 
     @Test
@@ -262,23 +263,23 @@ public class QuantityMeasurementTest {
 
     @Test
     void give0LiterAnd0Liter_ShouldReturnEquals() {
-        Volume liter1=new Volume(Volume.Unit.LITER,0.0);
-        Volume liter2 = new Volume(Volume.Unit.LITER,0.0);
-        Assertions.assertEquals(liter1,liter2);
+        Volume liter1 = new Volume(Volume.Unit.LITER, 0.0);
+        Volume liter2 = new Volume(Volume.Unit.LITER, 0.0);
+        Assertions.assertEquals(liter1, liter2);
     }
 
     @Test
     void give1LiterAnd2Liter_ShouldReturnNotEquals() {
-        Volume liter1=new Volume(Volume.Unit.LITER,1.0);
-        Volume liter2 = new Volume(Volume.Unit.LITER,2.0);
-        Assertions.assertNotEquals(liter1,liter2);
+        Volume liter1 = new Volume(Volume.Unit.LITER, 1.0);
+        Volume liter2 = new Volume(Volume.Unit.LITER, 2.0);
+        Assertions.assertNotEquals(liter1, liter2);
     }
 
     @Test
     void given0GallonAndNull_ShouldReturnsNotEquals() {
-        Volume liter1=new Volume(Volume.Unit.LITER,1.0);
-        Volume liter2=null;
-        Assertions.assertNotEquals(liter1,liter2);
+        Volume liter1 = new Volume(Volume.Unit.LITER, 1.0);
+        Volume liter2 = null;
+        Assertions.assertNotEquals(liter1, liter2);
     }
 
     @Test
@@ -296,10 +297,42 @@ public class QuantityMeasurementTest {
     }
 
     @Test
-    void givenliterWithDiffReference_ShouldReturnFalse() {
+    void givenLiterWithDiffReference_ShouldReturnFalse() {
         Volume liter1 = new Volume(Volume.Unit.LITER, 0.0);
         Volume liter2 = new Volume(Volume.Unit.LITER, 0.0);
         boolean result = liter1 == liter2;
         Assertions.assertFalse(result);
+    }
+
+    @Test
+    void given0GallonAnd0Liter_WhenCompared_ShouldReturnTrue() {
+        Volume gallon = new Volume(Volume.Unit.GALLON, 0.0);
+        Volume liter = new Volume(Volume.Unit.LITER, 0.0);
+        boolean compareCheck = gallon.compare(liter);
+        Assertions.assertTrue(compareCheck);
+    }
+
+    @Test
+    void given0GallonAnd1Liter_WhenCompared_ShouldReturnNotEqual() {
+        Volume gallon = new Volume(Volume.Unit.GALLON, 0.0);
+        Volume liter = new Volume(Volume.Unit.LITER, 1.0);
+        boolean compareCheck = gallon.compare(liter);
+        Assertions.assertFalse(compareCheck);
+    }
+
+    @Test
+    void given1GallonAnd3pt78Liters_WhenCompared_ShouldReturnEquals() {
+        Volume gallon = new Volume(Volume.Unit.GALLON, 1.0);
+        Volume liter = new Volume(Volume.Unit.LITER, 3.78);
+        boolean compareCheck = gallon.compare(liter);
+        Assertions.assertTrue(compareCheck);
+    }
+
+    @Test
+    void given3pt78LitersAnd1Gallon_WhenCompared_ShouldReturnEquals() {
+        Volume liter = new Volume(Volume.Unit.LITER, 3.78);
+        Volume gallon = new Volume(Volume.Unit.GALLON, 1.0);
+        boolean compareCheck = gallon.compare(liter);
+        Assertions.assertTrue(compareCheck);
     }
 }
