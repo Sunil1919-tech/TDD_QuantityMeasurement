@@ -58,11 +58,22 @@ public class Length {
         return false;
     }
 
+    /**
+     * Method to calculate the sum of two lengths and return inches
+     * @param that
+     * @return sum
+     */
     public Length sumOfLengths(Length that) {
         double sum = 0.0;
         if (this.unit.equals(Unit.INCH) && that.unit.equals(Unit.INCH))
             sum = this.value + that.value;
-        return new Length(Unit.INCH,sum);
+        else if (this.unit.equals(Unit.FEET) && that.unit.equals(Unit.INCH))
+            sum = this.value * FEET_TO_INCH + that.value;
+        else if (this.unit.equals(Unit.FEET) && that.unit.equals(Unit.FEET))
+            sum = this.value * FEET_TO_INCH + that.value * FEET_TO_INCH;
+        else if (this.unit.equals(Unit.INCH) && that.unit.equals(Unit.CENTIMETER))
+            sum = this.value + that.value / INCH_TO_CM;
+        return new Length(Unit.INCH, sum);
     }
     /**
      * equals method to compare the object values with different references
