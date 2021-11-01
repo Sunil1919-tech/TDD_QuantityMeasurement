@@ -225,4 +225,10 @@ public class QuantityMeasurementTest {
         Length actualSum = inch.sumOfLengths(cm);
         Assertions.assertEquals(expectedSum,actualSum);
     }
+    @Test
+    public void given0GallonAnd0Gallon_ShouldReturnEqual(){
+        Volume gallon1 = new Volume(Volume.Unit.GALLON,0.0);
+        Volume gallon2 = new Volume(Volume.Unit.GALLON,0.0);
+        Assertions.assertEquals(gallon1, gallon2);
+    }
 }
