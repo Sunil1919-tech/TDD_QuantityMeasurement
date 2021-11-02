@@ -16,6 +16,16 @@ public class Weight {
         this.value = value;
     }
 
+
+    public boolean compare(Weight that) {
+        if (this.unit.equals(Unit.KG) && that.unit.equals(Unit.GRAM))
+            return Double.compare(this.value * KILOGRAM_TO_GRAM, that.value) == 0;
+        if (this.unit.equals(Unit.GRAM) && that.unit.equals(Unit.KG))
+            return Double.compare(this.value, that.value * KILOGRAM_TO_GRAM) == 0;
+
+        return false;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
