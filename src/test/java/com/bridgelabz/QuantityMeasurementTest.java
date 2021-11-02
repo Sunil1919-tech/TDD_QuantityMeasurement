@@ -371,10 +371,47 @@ public class QuantityMeasurementTest {
 
     @Test
     void given1LiterAnd1000ML_WhenAdded_ShouldReturn2Liter() {
-        Volume liter =new Volume(Volume.Unit.LITER,1.0);
-        Volume ml=new Volume(Volume.Unit.MILLI_LITER,1000.0);
-        Volume expectedValue =new Volume(Volume.Unit.LITER,2.0);
-        Volume actualValue =liter.sumOfVolume(ml);
-        Assertions.assertEquals(expectedValue,actualValue);
+        Volume liter = new Volume(Volume.Unit.LITER, 1.0);
+        Volume ml = new Volume(Volume.Unit.MILLI_LITER, 1000.0);
+        Volume expectedValue = new Volume(Volume.Unit.LITER, 2.0);
+        Volume actualValue = liter.sumOfVolume(ml);
+        Assertions.assertEquals(expectedValue, actualValue);
     }
+
+    @Test
+    void given0GramAnd0Gram_ShouldReturnEqualWeight() {
+        Weight gram1 = new Weight(Weight.Unit.GRAM, 0.0);
+        Weight gram2 = new Weight(Weight.Unit.GRAM, 0.0);
+        Assertions.assertEquals(gram1, gram2);
+    }
+
+    @Test
+    void given0GramAnd1Gram_ShouldReturnNotEqualWeight() {
+        Weight gram1 = new Weight(Weight.Unit.GRAM, 0.0);
+        Weight gram2 = new Weight(Weight.Unit.GRAM, 1.0);
+        Assertions.assertNotEquals(gram1, gram2);
+    }
+
+    @Test
+    void given0GramAndNull_ShouldReturnNotEqualWeight() {
+        Weight gram1 = new Weight(Weight.Unit.GRAM, 0.0);
+        Weight gram2 = null;
+        Assertions.assertNotEquals(gram1, gram2);
+    }
+
+    @Test
+    void given0GramAnd0GramFromDiffRef_ShouldReturnNotEqualWeight() {
+        Weight gram1 = new Weight(Weight.Unit.GRAM, 0.0);
+        Weight gram2 = new Weight(Weight.Unit.GRAM, 0.0);
+        Assertions.assertNotSame(gram1, gram2);
+    }
+
+    @Test
+    void given0GramAnd0GramFromDiffType_ShouldReturnNotEqualWeight() {
+        Weight weight = new Weight(Weight.Unit.GRAM, 0.0);
+        Volume volume = new Volume(Volume.Unit.GALLON, 0.0);
+        Assertions.assertNotEquals(weight, volume);
+    }
+
+
 }
