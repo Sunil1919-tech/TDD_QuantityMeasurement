@@ -7,6 +7,7 @@ public class Weight {
     public enum Unit {
         KG, TONNE, GRAM
     }
+    private static final double KILOGRAM_TO_GRAM = 1000.0;
     private final Unit unit;
     private final double value;
 

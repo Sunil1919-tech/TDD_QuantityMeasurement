@@ -482,4 +482,11 @@ public class QuantityMeasurementTest {
         Volume gallon = new Volume(Volume.Unit.GALLON, 0.0);
         Assertions.assertNotEquals(tonne, gallon);
     }
+
+    @Test
+    void given1KgAnd1Gram_WhenCompared_shouldReturnNotEqualWeight() {
+        Weight kg = new Weight(Weight.Unit.KG, 1.0);
+        Weight gram = new Weight(Weight.Unit.GRAM, 1.0);
+        Assertions.assertNotEquals(kg, gram);
+    }
 }
