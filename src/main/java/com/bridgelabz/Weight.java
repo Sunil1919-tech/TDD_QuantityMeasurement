@@ -4,7 +4,8 @@ import java.util.Objects;
 
 public class Weight {
 
-    public enum Unit {GRAM
+    public enum Unit {
+        KG, GRAM
     }
     private final Unit unit;
     private final double value;

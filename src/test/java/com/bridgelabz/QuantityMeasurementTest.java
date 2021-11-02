@@ -413,5 +413,38 @@ public class QuantityMeasurementTest {
         Assertions.assertNotEquals(weight, volume);
     }
 
+    @Test
+    void given0KgAnd0Kg_shouldReturnEqualWeight() {
+        Weight kg1 = new Weight(Weight.Unit.KG, 0.0);
+        Weight kg2 = new Weight(Weight.Unit.KG, 0.0);
+        Assertions.assertEquals(kg1, kg2);
+    }
 
+    @Test
+    void given0KgAnd1Kg_shouldReturnNotEqualWeight() {
+        Weight kg1 = new Weight(Weight.Unit.KG, 0.0);
+        Weight kg2 = new Weight(Weight.Unit.KG, 1.0);
+        Assertions.assertNotEquals(kg1, kg2);
+    }
+
+    @Test
+    void given0KgAndNull_shouldReturnNotEqualWeight() {
+        Weight kg1 = new Weight(Weight.Unit.KG, 0.0);
+        Weight kg2 = null;
+        Assertions.assertNotEquals(kg1, kg2);
+    }
+
+    @Test
+    void given0KgAnd0KgFromDiffRef_ShouldReturnNotEqualWeight() {
+        Weight kg1 = new Weight(Weight.Unit.KG, 0.0);
+        Weight kg2 = new Weight(Weight.Unit.KG, 0.0);
+        Assertions.assertNotSame(kg1, kg2);
+    }
+
+    @Test
+    void given0GKgAnd0GallonFromDiffType_ShouldReturnNotEqualWeight() {
+        Weight weight = new Weight(Weight.Unit.KG, 0.0);
+        Volume volume = new Volume(Volume.Unit.GALLON, 0.0);
+        Assertions.assertNotEquals(weight, volume);
+    }
 }
