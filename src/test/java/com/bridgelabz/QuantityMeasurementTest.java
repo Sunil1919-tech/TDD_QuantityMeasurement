@@ -505,4 +505,11 @@ public class QuantityMeasurementTest {
         boolean compareCheck = gram.compare(kg);
         Assertions.assertTrue(compareCheck);
     }
+
+    @Test
+    void given1TonneAnd1Kg_WhenCompared_ShouldReturnNotEqualWeight() {
+        Weight tonne = new Weight(Weight.Unit.TONNE, 1.0);
+        Weight kilogram = new Weight(Weight.Unit.KG, 1.0);
+        Assertions.assertNotEquals(tonne,kilogram);
+    }
 }
