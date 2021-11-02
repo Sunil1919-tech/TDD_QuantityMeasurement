@@ -359,4 +359,13 @@ public class QuantityMeasurementTest {
         boolean compareCheck = ml.compare(liter);
         Assertions.assertTrue(compareCheck);
     }
+
+    @Test
+    void given1GallonAnd3point78Liter_WhenAdded_ShouldReturn7point56Liter() {
+        Volume gallon = new Volume(Volume.Unit.GALLON, 1.0);
+        Volume liter = new Volume(Volume.Unit.LITER, 3.78);
+        Volume expectedValue = new Volume(Volume.Unit.LITER, 7.56);
+        Volume actualValue = gallon.sumOfVolume(liter);
+        Assertions.assertEquals(expectedValue, actualValue);
+    }
 }

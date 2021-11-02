@@ -9,6 +9,7 @@ package com.bridgelabz;
  * @since 01/10/2021
  */
 public class Volume {
+
     public enum Unit {GALLON, LITER, MILLI_LITER
     }
     private static final double GALLON_TO_LITER = 3.78;
@@ -23,7 +24,7 @@ public class Volume {
 
     /**
      * Method to Implement comparing operation to check equality
-     * @param that
+     * @param that any unit Value
      * @return actualValue
      */
     public boolean compare(Volume that) {
@@ -33,13 +34,18 @@ public class Volume {
             return Double.compare(this.value * GALLON_TO_LITER, that.value) == 0;
         if (this.unit.equals(Unit.LITER) && that.unit.equals(Unit.GALLON))
             return Double.compare(this.value, that.value * GALLON_TO_LITER) == 0;
-        if (this.unit.equals(Unit.MILLI_LITER) && that.unit.equals(Unit.MILLI_LITER))
-            return Double.compare(this.value, that.value) == 0;
         if (this.unit.equals(Unit.LITER) && that.unit.equals(Unit.MILLI_LITER))
             return Double.compare(this.value * LITER_TO_ML, that.value) == 0;
         if (this.unit.equals(Unit.MILLI_LITER) && that.unit.equals(Unit.LITER))
             return Double.compare(this.value, that.value * LITER_TO_ML) == 0;
         return false;
+    }
+
+    public Volume sumOfVolume(Volume that) {
+        double sum = 0.0;
+        if (this.unit.equals(Unit.GALLON) && that.unit.equals(Unit.LITER))
+            sum = this.value * GALLON_TO_LITER + that.value;
+        return new Volume(Unit.LITER, sum);
     }
 
     /**
