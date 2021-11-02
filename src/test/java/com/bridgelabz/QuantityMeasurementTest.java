@@ -510,6 +510,22 @@ public class QuantityMeasurementTest {
     void given1TonneAnd1Kg_WhenCompared_ShouldReturnNotEqualWeight() {
         Weight tonne = new Weight(Weight.Unit.TONNE, 1.0);
         Weight kilogram = new Weight(Weight.Unit.KG, 1.0);
-        Assertions.assertNotEquals(tonne,kilogram);
+        Assertions.assertNotEquals(tonne, kilogram);
+    }
+
+    @Test
+    void given1TonneAnd1000Kg_WhenCompared_ShouldReturnEqualWeight() {
+        Weight tonne = new Weight(Weight.Unit.TONNE, 1.0);
+        Weight kilogram = new Weight(Weight.Unit.KG, 1000.0);
+        boolean compareCheck = tonne.compare(kilogram);
+        Assertions.assertTrue(compareCheck);
+    }
+
+    @Test
+    void given1000KgAnd1Tonne_WhenCompared_ShouldReturnEqualWeight() {
+        Weight kilogram = new Weight(Weight.Unit.KG, 1000.0);
+        Weight tonne = new Weight(Weight.Unit.TONNE, 1.0);
+        boolean compareCheck = kilogram.compare(tonne);
+        Assertions.assertTrue(compareCheck);
     }
 }
