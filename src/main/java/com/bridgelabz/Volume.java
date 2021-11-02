@@ -45,6 +45,8 @@ public class Volume {
         double sum = 0.0;
         if (this.unit.equals(Unit.GALLON) && that.unit.equals(Unit.LITER))
             sum = this.value * GALLON_TO_LITER + that.value;
+        if (this.unit.equals(Unit.LITER) && that.unit.equals(Unit.MILLI_LITER))
+            sum = this.value + that.value / LITER_TO_ML;
         return new Volume(Unit.LITER, sum);
     }
 
@@ -60,8 +62,4 @@ public class Volume {
         Volume volume = (Volume) o;
         return Double.compare(volume.value, value) == 0 && unit == volume.unit;
     }
-
-
-
-
 }

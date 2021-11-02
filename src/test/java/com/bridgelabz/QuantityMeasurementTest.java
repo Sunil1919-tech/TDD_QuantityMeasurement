@@ -368,4 +368,13 @@ public class QuantityMeasurementTest {
         Volume actualValue = gallon.sumOfVolume(liter);
         Assertions.assertEquals(expectedValue, actualValue);
     }
+
+    @Test
+    void given1LiterAnd1000ML_WhenAdded_ShouldReturn2Liter() {
+        Volume liter =new Volume(Volume.Unit.LITER,1.0);
+        Volume ml=new Volume(Volume.Unit.MILLI_LITER,1000.0);
+        Volume expectedValue =new Volume(Volume.Unit.LITER,2.0);
+        Volume actualValue =liter.sumOfVolume(ml);
+        Assertions.assertEquals(expectedValue,actualValue);
+    }
 }
