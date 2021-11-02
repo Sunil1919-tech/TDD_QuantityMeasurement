@@ -443,8 +443,43 @@ public class QuantityMeasurementTest {
 
     @Test
     void given0GKgAnd0GallonFromDiffType_ShouldReturnNotEqualWeight() {
-        Weight weight = new Weight(Weight.Unit.KG, 0.0);
-        Volume volume = new Volume(Volume.Unit.GALLON, 0.0);
-        Assertions.assertNotEquals(weight, volume);
+        Weight kg = new Weight(Weight.Unit.KG, 0.0);
+        Volume gallon = new Volume(Volume.Unit.GALLON, 0.0);
+        Assertions.assertNotEquals(kg, gallon);
+    }
+
+    @Test
+    void given0TonneAnd0Tonne_shouldReturnEqualWeight() {
+        Weight tonne1 = new Weight(Weight.Unit.TONNE, 0.0);
+        Weight tonne2 = new Weight(Weight.Unit.TONNE, 0.0);
+        Assertions.assertEquals(tonne1, tonne2);
+    }
+
+    @Test
+    void given0TonneAnd1Tonne_shouldReturnNotEqualWeight() {
+        Weight tonne1 = new Weight(Weight.Unit.TONNE, 0.0);
+        Weight tonne2 = new Weight(Weight.Unit.TONNE, 1.0);
+        Assertions.assertNotEquals(tonne1, tonne2);
+    }
+
+    @Test
+    void given0TonneAndNull_shouldReturnNotEqualWeight() {
+        Weight tonne1 = new Weight(Weight.Unit.TONNE, 0.0);
+        Weight tonne2 = null;
+        Assertions.assertNotEquals(tonne1, tonne2);
+    }
+
+    @Test
+    void given0TonneAnd0TonneFromDiffRef_ShouldReturnNotEqualWeight() {
+        Weight tonne1 = new Weight(Weight.Unit.TONNE, 0.0);
+        Weight tonne2 = new Weight(Weight.Unit.TONNE, 0.0);
+        Assertions.assertNotSame(tonne1, tonne2);
+    }
+
+    @Test
+    void given0TonneAnd0GallonFromDiffType_ShouldReturnNotEqualWeight() {
+        Weight tonne = new Weight(Weight.Unit.TONNE, 0.0);
+        Volume gallon = new Volume(Volume.Unit.GALLON, 0.0);
+        Assertions.assertNotEquals(tonne, gallon);
     }
 }
