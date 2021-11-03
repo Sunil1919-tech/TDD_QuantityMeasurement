@@ -2,89 +2,28 @@ package com.bridgelabz;
 
 /**
  * purpose - Quantity measurement programming to perform different
- * measuring operations
+ * measuring operations of UnitMeasurementSystems
  *
  * @author Sunil
  * @version 12.0
  * @since 31/10/2021
  */
-public class Length {
+public enum Length implements UnitMeasurement {
+    FEET(12.0), INCH(1.0), YARD(36.0), CENTIMETER(0.4);
 
-    public enum Unit {
-        FEET, INCH, YARD, CENTIMETER
+    public final double conversionValue;
+
+    Length(double conversionValue) {
+        this.conversionValue = conversionValue;
     }
 
-    private static final double YARD_TO_FEET = 3.0;
-    private static final double FEET_TO_INCH = 12.0;
-    private static final double YARD_TO_INCH = 36.0;
-    private static final double INCH_TO_CM = 2.5;
-    private final Unit unit;
-    private final double value;
-    public Length(Unit unit, double value) {
-        this.unit = unit;
-        this.value = value;
-    }
 
-    /**
-     * Method to compare the Lengths
-     * @param that
-     * @return actualValue
-     */
-    public boolean compare(Length that) {
-        if (this.unit.equals(Unit.FEET) && that.unit.equals(Unit.FEET))
-            return Double.compare(this.value, that.value) == 0;
-        if (this.unit.equals(Unit.FEET) && that.unit.equals(Unit.INCH))
-            return Double.compare(this.value * FEET_TO_INCH, that.value) == 0;
-        if (this.unit.equals(Unit.INCH) && that.unit.equals(Unit.INCH))
-            return Double.compare(this.value, that.value) == 0;
-        if (this.unit.equals(Unit.INCH) && that.unit.equals(Unit.FEET))
-            return Double.compare(this.value, that.value * FEET_TO_INCH) == 0;
-        if (this.unit.equals(Unit.YARD) && that.unit.equals(Unit.YARD))
-            return Double.compare(this.value, that.value) == 0;
-        if (this.unit.equals(Unit.FEET) && that.unit.equals(Unit.YARD))
-            return Double.compare(this.value, that.value * YARD_TO_FEET) == 0;
-        if (this.unit.equals(Unit.YARD) && that.unit.equals(Unit.FEET))
-            return Double.compare(this.value * YARD_TO_FEET, that.value) == 0;
-        if (this.unit.equals(Unit.INCH) && that.unit.equals(Unit.YARD))
-            return Double.compare(this.value, that.value * YARD_TO_INCH) == 0;
-        if (this.unit.equals(Unit.YARD) && that.unit.equals(Unit.INCH))
-            return Double.compare(this.value * YARD_TO_INCH, that.value) == 0;
-        if (this.unit.equals(Unit.CENTIMETER) && that.unit.equals(Unit.CENTIMETER))
-            return Double.compare(this.value, that.value) == 0;
-        if (this.unit.equals(Unit.INCH) && that.unit.equals(Unit.CENTIMETER))
-            return Double.compare(this.value * INCH_TO_CM, that.value) == 0;
-        if (this.unit.equals(Unit.CENTIMETER) && that.unit.equals(Unit.INCH))
-            return Double.compare(this.value, that.value * INCH_TO_CM) == 0;
-        return false;
-    }
-
-    /**
-     * Method to calculate the sum of two lengths and return inches
-     * @param that
-     * @return sum
-     */
-    public Length sumOfLengths(Length that) {
-        double sum = 0.0;
-        if (this.unit.equals(Unit.INCH) && that.unit.equals(Unit.INCH))
-            sum = this.value + that.value;
-        else if (this.unit.equals(Unit.FEET) && that.unit.equals(Unit.INCH))
-            sum = this.value * FEET_TO_INCH + that.value;
-        else if (this.unit.equals(Unit.FEET) && that.unit.equals(Unit.FEET))
-            sum = this.value * FEET_TO_INCH + that.value * FEET_TO_INCH;
-        else if (this.unit.equals(Unit.INCH) && that.unit.equals(Unit.CENTIMETER))
-            sum = this.value + that.value / INCH_TO_CM;
-        return new Length(Unit.INCH, sum);
-    }
-    /**
-     * equals method to compare the object values with different references
-     * @param o
-     * @return true
-     */
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Length that = (Length) o;
-        return Double.compare(that.value, value) == 0 && unit == that.unit;
+    public double convertToBaseUnit(UnitMeasurementSystem units) {
+        return (units.value * conversionValue);
+    }
+
+    public boolean supportAddition() {
+        return true;
     }
 }
