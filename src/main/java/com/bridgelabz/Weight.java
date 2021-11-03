@@ -4,6 +4,8 @@ import java.util.Objects;
 
 public class Weight {
 
+
+
     public enum Unit {
         KG, TONNE, GRAM
     }
@@ -28,6 +30,13 @@ public class Weight {
         if (this.unit.equals(Unit.KG) && that.unit.equals(Unit.TONNE))
             return Double.compare(this.value, that.value * TONNE_TO_KG) == 0;
         return false;
+    }
+
+    public Weight sumOfWeight(Weight that) {
+        double sum = 0.0;
+        if (this.unit.equals(Unit.TONNE) && that.unit.equals(Unit.GRAM))
+            sum = this.value * TONNE_TO_KG + that.value / KILOGRAM_TO_GRAM;
+        return new Weight(Unit.KG, sum);
     }
 
     @Override
