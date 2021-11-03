@@ -1,7 +1,7 @@
 package com.bridgelabz;
 
 public class Temperature {
-    public enum Unit {FAHRENHEIT}
+    public enum Unit {CELSIUS, FAHRENHEIT}
 
     private final Unit unit;
     private final double temperature;
