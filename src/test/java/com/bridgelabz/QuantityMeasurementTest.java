@@ -607,4 +607,20 @@ public class QuantityMeasurementTest {
         Weight weight = new Weight(Weight.Unit.GRAM, 0.0);
         Assertions.assertNotEquals(temparature, weight);
     }
+
+    @Test
+    void given212FahrenheitAnd100Celsius_WhenCompared_ShouldReturnEqualTemperature() {
+        Temperature fahrenheit = new Temperature(Temperature.Unit.FAHRENHEIT, 212.0);
+        Temperature celsius = new Temperature(Temperature.Unit.CELSIUS, 100.0);
+        boolean compareCheck = fahrenheit.compare(celsius);
+        Assertions.assertTrue(compareCheck);
+    }
+
+    @Test
+    void given100CelsiusAnd212Celsius_WhenCompared_ShouldReturnEqualTemperature() {
+        Temperature celsius = new Temperature(Temperature.Unit.CELSIUS, 100.0);
+        Temperature fahrenheit = new Temperature(Temperature.Unit.FAHRENHEIT, 212.0);
+        boolean compareCheck = celsius.compare(fahrenheit);
+        Assertions.assertTrue(compareCheck);
+    }
 }
