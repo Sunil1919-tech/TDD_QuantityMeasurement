@@ -537,4 +537,39 @@ public class QuantityMeasurementTest {
         Weight actualSum = tonne.sumOfWeight(gram);
         Assertions.assertEquals(expectedSum, actualSum);
     }
+
+    @Test
+    void given0FahrenheitAnd0Fahrenheit_ShouldReturnEqualTemperature() {
+        Temperature temparature1 = new Temperature(Temperature.Unit.FAHRENHEIT,0.0);
+        Temperature temparature2 = new Temperature(Temperature.Unit.FAHRENHEIT,0.0);
+        Assertions.assertEquals(temparature1,temparature2);
+    }
+
+    @Test
+    void given0FahrenheitAnd1Fahrenheit_ShouldReturnNotEqualTemperature() {
+        Temperature temparature1 = new Temperature(Temperature.Unit.FAHRENHEIT,0.0);
+        Temperature temparature2 = new Temperature(Temperature.Unit.FAHRENHEIT,1.0);
+        Assertions.assertNotEquals(temparature1,temparature2);
+    }
+
+    @Test
+    void given1FahrenheitAndNull_ShouldReturnNotEqualTemperature() {
+        Temperature temparature1 = new Temperature(Temperature.Unit.FAHRENHEIT,1.0);
+        Temperature temparature2 = null;
+        Assertions.assertNotEquals(temparature1,temparature2);
+    }
+
+    @Test
+    void given0FahrenheitAnd0FahrenheitFromDiffRef_ShouldReturnNotEqualTemperature() {
+        Temperature temparature1 = new Temperature(Temperature.Unit.FAHRENHEIT,0.0);
+        Temperature temparature2 = new Temperature(Temperature.Unit.FAHRENHEIT,0.0);
+        Assertions.assertNotSame(temparature1,temparature2);
+    }
+
+    @Test
+    void given0FahrenheitAnd0FahrenheitFromDiffType_ShouldReturnNotEqualTemperature() {
+        Temperature temperature = new Temperature(Temperature.Unit.FAHRENHEIT, 0.0);
+        Weight weight = new Weight(Weight.Unit.GRAM, 0.0);
+        Assertions.assertNotEquals(temperature, weight);
+    }
 }
