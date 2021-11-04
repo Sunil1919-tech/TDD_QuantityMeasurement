@@ -1,65 +1,30 @@
 package com.bridgelabz;
 
 /**
- * purpose - Quantity measurement programming to perform different Volume
- * measuring operations
+ * purpose - creating enum to implement UnitMeasurement class
  *
  * @author Sunil
  * @version 12.0
  * @since 01/10/2021
  */
-public class Volume {
+public enum Volume implements UnitMeasurement {
 
-    public enum Unit {GALLON, LITER, MILLI_LITER
-    }
-    private static final double GALLON_TO_LITER = 3.78;
-    private static final double LITER_TO_ML = 1000.0;
-    private final Unit unit;
-    private final double value;
+    GALLON(3.78), LITER(1.0), MILLI_LITER(0.001);
 
-    public Volume(Unit unit, double value) {
-        this.unit = unit;
-        this.value = value;
+    private final double conversionValue;
+
+    Volume(double conversionValue) {
+        this.conversionValue = conversionValue;
     }
 
     /**
-     * Method to Implement comparing operation to check equality
-     * @param that any unit Value
-     * @return actualValue
-     */
-    public boolean compare(Volume that) {
-        if (this.unit.equals(that.unit))
-            return this.equals(that);
-        if (this.unit.equals(Unit.GALLON) && that.unit.equals(Unit.LITER))
-            return Double.compare(this.value * GALLON_TO_LITER, that.value) == 0;
-        if (this.unit.equals(Unit.LITER) && that.unit.equals(Unit.GALLON))
-            return Double.compare(this.value, that.value * GALLON_TO_LITER) == 0;
-        if (this.unit.equals(Unit.LITER) && that.unit.equals(Unit.MILLI_LITER))
-            return Double.compare(this.value * LITER_TO_ML, that.value) == 0;
-        if (this.unit.equals(Unit.MILLI_LITER) && that.unit.equals(Unit.LITER))
-            return Double.compare(this.value, that.value * LITER_TO_ML) == 0;
-        return false;
-    }
-
-    public Volume sumOfVolume(Volume that) {
-        double sum = 0.0;
-        if (this.unit.equals(Unit.GALLON) && that.unit.equals(Unit.LITER))
-            sum = this.value * GALLON_TO_LITER + that.value;
-        if (this.unit.equals(Unit.LITER) && that.unit.equals(Unit.MILLI_LITER))
-            sum = this.value + that.value / LITER_TO_ML;
-        return new Volume(Unit.LITER, sum);
-    }
-
-    /**
-     * Equals method to compare the Volume Units
-     * @param o
-     * @return true
+     * overriding the convertToBaseUnit() method
+     * @param units the volume parameter for converting to base value
+     * @return conversionValue
      */
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Volume volume = (Volume) o;
-        return Double.compare(volume.value, value) == 0 && unit == volume.unit;
+    public double convertToBaseUnit(QuantityMeasurementSystem units) {
+        return units.value * conversionValue;
     }
+
 }

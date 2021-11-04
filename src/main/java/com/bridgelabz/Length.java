@@ -1,8 +1,7 @@
 package com.bridgelabz;
 
 /**
- * purpose - Quantity measurement programming to perform different
- * measuring operations of UnitMeasurementSystems
+ * purpose - creating enum to implement the UnitMeasurement class
  *
  * @author Sunil
  * @version 12.0
@@ -17,13 +16,14 @@ public enum Length implements UnitMeasurement {
         this.conversionValue = conversionValue;
     }
 
-
+    /**
+     * overriding the convertToBaseUnit() method
+     * @param units the length parameter  for converting to base value
+     * @return conversionValue
+     */
     @Override
-    public double convertToBaseUnit(UnitMeasurementSystem units) {
+    public double convertToBaseUnit(QuantityMeasurementSystem units) {
         return (units.value * conversionValue);
     }
 
-    public boolean supportAddition() {
-        return true;
-    }
 }

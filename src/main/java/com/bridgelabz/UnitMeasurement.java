@@ -1,7 +1,6 @@
 package com.bridgelabz;
 
 public interface UnitMeasurement {
-    double convertToBaseUnit(UnitMeasurementSystem units);
+    double convertToBaseUnit(QuantityMeasurementSystem units);
 
-    boolean supportAddition();
 }

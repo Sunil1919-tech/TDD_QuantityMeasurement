@@ -1,30 +1,30 @@
 package com.bridgelabz;
 
-public class Temperature {
+import java.util.function.Function;
 
-    public enum Unit {CELSIUS, FAHRENHEIT}
+/**
+ * purpose- creating enum to implement the UnitMeasurement class
+ */
+public enum Temperature implements UnitMeasurement {
 
-    private final Unit unit;
-    private final double temperature;
+    CELSIUS(false), FAHRENHEIT(true);
 
-    public Temperature(Unit unit, double temperature) {
-        this.unit = unit;
-        this.temperature = temperature;
+    private final Function<Double, Double> baseUnitConversion;
+    private final Function<Double, Double> FahrenheitToCelsius = (Double degreeF) -> (degreeF - 32) * 5 / 9;
+    private final Function<Double, Double> CelsiusToFahrenheit = (Double degreeC) -> degreeC;
+
+    Temperature(boolean temp) {
+        if (temp) this.baseUnitConversion = FahrenheitToCelsius;
+        else this.baseUnitConversion = CelsiusToFahrenheit;
     }
 
-    public boolean compare(Temperature that) {
-        if (this.unit.equals(Unit.FAHRENHEIT) && that.unit.equals(Unit.CELSIUS))
-            return Double.compare((this.temperature - 32) * 5 / 9, that.temperature) == 0;
-        if (this.unit.equals(Unit.CELSIUS) && that.unit.equals(Unit.FAHRENHEIT))
-            return Double.compare((this.temperature * 9 / 5) + 32, that.temperature) == 0;
-        return false;
-    }
-
+    /**
+     * overriding the convertToBaseUnit() method
+     * @param units the temperature parameter  for converting to base value
+     * @return conversionValue
+     */
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Temperature that = (Temperature) o;
-        return Double.compare(that.temperature, temperature) == 0 && unit == that.unit;
+    public double convertToBaseUnit(QuantityMeasurementSystem units) {
+        return baseUnitConversion.apply(units.value);
     }
 }
