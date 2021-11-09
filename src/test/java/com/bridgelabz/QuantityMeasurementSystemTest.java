@@ -3,7 +3,7 @@ package com.bridgelabz;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class QuantityMeasurementTest {
+public class QuantityMeasurementSystemTest {
     @Test
     void given0FeetAnd0Feet_ShouldReturnEqual() {
         QuantityMeasurementSystem feet1 = new QuantityMeasurementSystem(Length.FEET, 0.0);
@@ -289,12 +289,6 @@ public class QuantityMeasurementTest {
         Assertions.assertNotEquals(liter1, liter2);
     }
 
-    @Test
-    void given1LiterWithSameReference_ShouldReturnTrue() {
-        QuantityMeasurementSystem liter = new QuantityMeasurementSystem(Volume.LITER, 1.0);
-        boolean result = liter == liter;
-        Assertions.assertTrue(result);
-    }
 
     @Test
     void givenLiterWithDiffReference_ShouldReturnFalse() {
@@ -623,6 +617,7 @@ public class QuantityMeasurementTest {
         boolean compareCheck = celsius.compare(fahrenheit);
         Assertions.assertTrue(compareCheck);
     }
+
 
 
 }

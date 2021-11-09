@@ -2,6 +2,7 @@ package com.bridgelabz;
 
 /**
  * purpose- creating enum to implement the UnitMeasurement Class
+ *
  */
 public enum Weight implements UnitMeasurement {
 
